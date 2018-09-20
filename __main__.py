@@ -4,12 +4,15 @@ import tkinter as tk
 
 class Main(tk.Tk):
 	"""Root tk"""
+
 	def __init__(root, *args, **kwargs):
 		tk.Tk.__init__(root, *args, **kwargs)
 		# Configuracion de la ventana principal
-		dia_hora = time.ctime()
-		tit = "Bar La biela " + dia_hora
+
+		#Titulo ventana
+		tit = "Bar La biela " + time.ctime()
 		root.title(tit)
+
 		# Crea el obj pedido
 		root.pedido = Pedido()
 
