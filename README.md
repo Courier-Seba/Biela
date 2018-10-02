@@ -1,8 +1,6 @@
 # Bar Soft
+Software de ventas de un bar. Creado por Sebastian Valdivia.
 
-## Organizacion
-
-img
 
 ## Mesas
 ```
