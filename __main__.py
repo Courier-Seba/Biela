@@ -1,9 +1,9 @@
-from gui import Main
+from gui import Window
 
 
 def main():
 	"""Crea y ejecuta el gui del programa"""
-	app = Main()
+	app = Window()
 	app.mainloop()
 
 if __name__ == "__main__":
