@@ -1,6 +1,7 @@
 import tkinter as tk
 import time
-from widgets import Boton_agrega
+from widgets import Boton_menu
+from frames import Pedido, Clientes, Productos, Estadisticas
 
 class Window(tk.Tk):
 	"""Root class"""
@@ -8,13 +9,16 @@ class Window(tk.Tk):
 	def __init__(self, *args, **kwargs):
 		tk.Tk.__init__(self, *args, **kwargs)
 		# Configuracion de la ventana principal
-		#Titulo ventana
+		# Titulo ventana
 		tit = "Bar La biela " + time.ctime()
 		self.title(tit)
+		# Size
+		self.geometry("800x600")
+		self.configure(background="#FFFFFF")
 
 		# Main Frame
 		self.mainFrame = Main(self)
-		self.mainFrame.grid()
+		self.mainFrame.pack()
 
 class Main(tk.Frame):
 	"""Frame mas bajo, sobre el se crean los demas"""
@@ -23,30 +27,51 @@ class Main(tk.Frame):
 		self.parent = parent
 
 		self.lateral = Lateral(self)
-		self.lateral.grid(column=0, row=0)
+		self.lateral.pack(side=tk.LEFT, fill=tk.Y)
 
 		self.container = tk.Frame()
-		self.container.grid(column=1, row=0)
+		self.container.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
+		self.frameList = {}
 
+		for Frame in (Bienvenida, Pedido, Clientes, Productos, Estadisticas):
+			page_name = Frame.__name__
+			frameCreado = Frame(parent=self.container)
+			self.frameList[page_name] = frameCreado
+			frameCreado.grid(row=0, column=0, sticky="nsew")
+
+		self.carga_frame("Bienvenida")
+
+	def carga_frame(self, page_name):
+		'''Show a frame for the given page name'''
+		frame = self.frameList[page_name]
+		frame.tkraise()
 
 class Lateral(tk.Frame):
 	"""Frame del menu lateral"""
 	def __init__(self, parent):
-		tk.Frame.__init__(self, parent, bg="#000000", bd=10)
+		tk.Frame.__init__(self, parent, bg="#FFFFFF")
 		self.parent = parent
 		# Crea botones
 		self.botMenu = self.crea_bot()
 		# Los ubica
 		for bot in self.botMenu:
-			bot.pack(side=tk.TOP, fill=tk.X, expand=True)
+			bot.pack(side=tk.TOP, fill=tk.X)
 
 	def crea_bot(self):
 		botones = []
 		#Cantidad de botones (len de la lista) y sus textos
-		nombresBotones = ["Toma pedido", "Clientes", "Productos",
+		nombresBotones = ["Pedido", "Clientes", "Productos",
 						  "Estadisticas"]
 
 		for name in nombresBotones:
-			bot = Boton_agrega(self, name)
+			bot = Boton_menu(self, name, self.parent)
 			botones.append(bot)
+
 		return botones
+
+class Bienvenida(tk.Frame):
+	def __init__(self, parent):
+		tk.Frame.__init__(self, parent, bg="#FFFF00")
+		self.parent = parent
+		self.label = tk.Label(self, text="Bienvenido")
+		self.label.grid()
