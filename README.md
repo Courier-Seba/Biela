@@ -3,24 +3,7 @@ Software de ventas de un bar. Creado por Sebastian Valdivia.
 
 
 ## Mesas
-```
-|-----------/___ --------------------|
-|    M2                 M3           |
-|                                    |
-|M1   M7        M8         M9     M4 |
-|             M6              M5     |
-|M0         +++++++++++++++++++++++++|
-|------------------------------------|
-```
+Numeradas tipo M0, M1, M2
 
 ## Productos
-
-* Desayuno
-* Chico
-* Jarrita
-* Taza
-* Doble
-* Factura
-* Chocolatada
-* Gaseosa
-* Te/mate
+Se ingresan de a 1 con su correspondiente caracteristicas.

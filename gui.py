@@ -1,7 +1,11 @@
 import tkinter as tk
 import time
-from widgets import Boton_menu
+from widgets import BotonMenu
 from frames import Pedido, Clientes, Productos, Estadisticas
+
+# x y de la ventana
+#X = "800"
+#Y = "600"
 
 class Window(tk.Tk):
 	"""Root class"""
@@ -13,7 +17,9 @@ class Window(tk.Tk):
 		tit = "Bar La biela " + time.ctime()
 		self.title(tit)
 		# Size
-		self.geometry("800x600")
+#		self.winSize = X + "x" + Y
+#		self.geometry(self.winSize)
+
 		self.configure(background="#FFFFFF")
 
 		# Main Frame
@@ -42,7 +48,7 @@ class Main(tk.Frame):
 		self.carga_frame("Bienvenida")
 
 	def carga_frame(self, page_name):
-		'''Show a frame for the given page name'''
+		'''Carga el frame dado'''
 		frame = self.frameList[page_name]
 		frame.tkraise()
 
@@ -64,14 +70,14 @@ class Lateral(tk.Frame):
 						  "Estadisticas"]
 
 		for name in nombresBotones:
-			bot = Boton_menu(self, name, self.parent)
+			bot = BotonMenu(self, name, self.parent)
 			botones.append(bot)
 
 		return botones
 
 class Bienvenida(tk.Frame):
 	def __init__(self, parent):
-		tk.Frame.__init__(self, parent, bg="#FFFF00")
+		tk.Frame.__init__(self, parent, bg="#FFFFFF")
 		self.parent = parent
 		self.label = tk.Label(self, text="Bienvenido")
-		self.label.grid()
+		self.label.pack(expand=True)
