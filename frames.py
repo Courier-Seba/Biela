@@ -59,6 +59,8 @@ class Productos(tk.Frame):
 		self.subTit = Titulo(self, "Ingreso nuevo producto")
 		self.subTit.grid(column=0, row=1)
 
+		
+
 
 class Estadisticas(tk.Frame):
 	def __init__(self, parent):
