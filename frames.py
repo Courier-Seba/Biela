@@ -56,8 +56,13 @@ class Productos(tk.Frame):
 		self.titulo = Titulo(self, "Productos")
 		self.titulo.grid(column=0, row=0, columnspan=99)
 
-		self.subTit = Titulo(self, "Ingreso nuevo producto")
-		self.subTit.grid(column=0, row=1)
+		self.subTitVista = Titulo(self, "Productos")
+		self.subTitVista.grid(column=0, row=1)
+
+		#Vista y Busqueda
+
+		self.subTitIngre = Titulo(self, "Ingreso nuevo producto")
+		self.subTitIngre.grid(column=0, row=5)
 
 		
 
