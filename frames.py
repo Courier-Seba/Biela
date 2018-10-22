@@ -2,8 +2,8 @@
 # Modulos de los frames principales, excluidos los root y el lateral
 ####
 import tkinter as tk
-from widgets import Titulo, BotonIngreso, EntradaIngreso
-from carga import listaDeProductos
+from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto
+from gestion import productos
 
 
 class Pedido(tk.Frame):
@@ -20,7 +20,7 @@ class Pedido(tk.Frame):
 		self.titulo = Titulo(self, "Orden de pedido")
 		self.titulo.grid(column=0, row=0, columnspan=99)
 
-		for prod in listaDeProductos:
+		for prod in productos.lista:
 			widEnt = EntradaIngreso(self)
 			widBut = BotonIngreso(self, prod.nombre, widEnt)
 			par = [widEnt, widBut]
@@ -56,15 +56,22 @@ class Productos(tk.Frame):
 		self.titulo = Titulo(self, "Productos")
 		self.titulo.grid(column=0, row=0, columnspan=99)
 
-		self.subTitVista = Titulo(self, "Productos")
-		self.subTitVista.grid(column=0, row=1)
-
-		#Vista y Busqueda
-
+		# Nuevo producto
 		self.subTitIngre = Titulo(self, "Ingreso nuevo producto")
-		self.subTitIngre.grid(column=0, row=5)
+		self.subTitIngre.grid(column=0, row=1)
 
-		
+		self.labelNuevo = Texto(self, "Nombre")
+		self.labelNuevo.grid(column=0, row=2)
+		self.ingreNuevo = EntradaIngreso(self)
+		self.ingreNuevo.grid(column=1, row=2)
+
+		# Lista de productos
+		self.subTitVista = Titulo(self, "Productos")
+		self.subTitVista.grid(column=0, row=5)
+
+		# Vista
+
+
 
 
 class Estadisticas(tk.Frame):

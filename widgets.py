@@ -51,3 +51,10 @@ class EntradaIngreso(tk.Entry):
 			ValueError: print("U miss")
 
 		return datoInt
+
+class Texto(tk.Label):
+	"""Texto comun"""
+
+	def __init__(self, master, muestraTexto):
+		tk.Label.__init__(self, master, bg="#FFFFFF", fg="#000000", 
+						  text=muestraTexto)

@@ -1,3 +1,3 @@
-#Usa librerias estandar, no deberia ser necesario instalar otras cosas. 
-#Cualquier cosa como un error
-
+# Usa librerias estandar, no deberia ser necesario instalar otras cosas. 
+# Cualquier cosa como un error
+# son tkinter, pickle

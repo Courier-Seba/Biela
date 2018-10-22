@@ -64,7 +64,7 @@ class ListaProductos:
 	def __init__(self, productos):
 		# Lista de ids de productos
 		self.nombreArchivo = "save.p"
-		self.lista = self.carga_data()
+		self.lista = productos
 
 	def carga_data(self):
 		with open(self.nombreArchivo, "rb") as file:
@@ -75,3 +75,10 @@ class ListaProductos:
 	def guarda_data(self):
 		with open(self.nombreArchivo, "wb") as file:
 			pickle.dump(self.lista, file)
+
+listaDeProductos = [
+	Producto("Cafe", "chico", "30"),
+	Producto("cafeLeche", "taza", "50")
+]
+
+productos = ListaProductos(listaDeProductos)
