@@ -74,4 +74,4 @@ class ListaProductos:
 
 	def guarda_data(self):
 		with open(self.nombreArchivo, "wb") as file:
-			pickle.dump(self.lista)
+			pickle.dump(self.lista, file)
