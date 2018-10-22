@@ -2,6 +2,8 @@
 # Clases de gestion
 #####
 
+import pickle
+
 class Orden:
 	"""Orden del cliente"""
 
@@ -20,13 +22,6 @@ class Orden:
 		
 		return final
 
-
-class ListaProductos:
-	"""Productos de una orden"""
-
-	def __init__(self, productos):
-		# Lista de ids de productos
-		self.lista = productos
 
 class Mesa:
 	"""Mesa y su ubicacion"""
@@ -47,11 +42,12 @@ class Cliente:
 		self.cuentaCorriente = []
 
 	def deuda_total(self):
-		for compra in cuentaCorriente:
+		for compra in self.cuentaCorriente:
 			if compra.estado == False:
 				deuda += compra.total
 
 		return deuda
+
 
 class Producto:
 	"""Producto de venta"""
@@ -60,3 +56,22 @@ class Producto:
 		self.nombre = nombre
 		self.descripcion = desc
 		self.precio = precio
+
+
+class ListaProductos:
+	"""Productos de una orden"""
+
+	def __init__(self, productos):
+		# Lista de ids de productos
+		self.nombreArchivo = "save.p"
+		self.lista = self.carga_data()
+
+	def carga_data(self):
+		with open(self.nombreArchivo, "rb") as file:
+			carga = pickle.load(file)
+		
+		return carga
+
+	def guarda_data(self):
+		with open(self.nombreArchivo, "wb") as file:
+			pickle.dump(self.lista)
