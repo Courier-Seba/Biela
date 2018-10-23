@@ -1,11 +1,10 @@
 import tkinter as tk
 import time
 from widgets import BotonMenu
-from frames import Pedido, Clientes, Productos, Estadisticas
-
-# x y de la ventana
-#X = "800"
-#Y = "600"
+from pedidoFrame import Pedido
+from clienteFrame import Clientes
+from productosFrame import Productos
+from estadisticasFrame import Estadisticas
 
 class Window(tk.Tk):
 	"""Root class"""
