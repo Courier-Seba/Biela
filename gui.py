@@ -35,14 +35,14 @@ class Main(tk.Frame):
 		self.lateral.pack(side=tk.LEFT, fill=tk.Y)
 
 		self.container = tk.Frame()
-		self.container.pack(side=tk.RIGHT, expand=True, fill=tk.BOTH)
+		self.container.pack(side=tk.RIGHT, expand=True)
 		self.frameList = {}
 
 		for Frame in (Bienvenida, Pedido, Clientes, Productos, Estadisticas):
 			page_name = Frame.__name__
 			frameCreado = Frame(parent=self.container)
 			self.frameList[page_name] = frameCreado
-			frameCreado.grid(row=0, column=0, sticky="nsew")
+			frameCreado.grid(row=0, column=0, sticky=tk.NSEW)
 
 		self.carga_frame("Bienvenida")
 

@@ -7,7 +7,7 @@ import pickle
 class Orden:
 	"""Orden del cliente"""
 
-	def __init__(self, mesa, cliente, listaProductos):
+	def __init__(self, mesa, cliente, listaProductos, estado):
 		self.mesa = mesa
 		self.cliente = cliente
 		self.productos = listaProductos
