@@ -15,9 +15,9 @@ class Window(tk.Tk):
 		# Titulo ventana
 		tit = "Bar La biela " + time.ctime()
 		self.title(tit)
+
 		# Size
-#		self.winSize = X + "x" + Y
-#		self.geometry(self.winSize)
+		# self.geometry(winSize)
 
 		self.configure(background="#FFFFFF")
 

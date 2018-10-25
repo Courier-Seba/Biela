@@ -42,4 +42,4 @@ class Productos(tk.Frame):
 
 		# Vista
 		for prod in productos.lista:
-			cont = prod.textual
+			cont = prod.textual()
