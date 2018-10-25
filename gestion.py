@@ -54,13 +54,15 @@ class Producto:
 
 	def __init__(self, nombre, desc, precio):
 		self.nombre = nombre
-		self.descricion = desc
+		self.descripcion = desc
 		self.precio = precio
 		# Es una salida para la muestra de la info
 
-		def formateo_textual(self):
-			for atr in [self.nombre, self.descripcion, self.precio]:
-				textoFinal += atr + "\n"  
+	def formateo_textual(self):
+		textoFinal = ""
+		for atr in [self.nombre, self.descripcion, self.precio]:
+			textoFinal += atr + "\n"
+		return textoFinal
 
 class ListaProductos:
 	"""Productos de una orden"""

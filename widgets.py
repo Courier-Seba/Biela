@@ -71,4 +71,4 @@ class MuestraLabel(tk.Label):
 
 	def __init__(self, master, contenido):
 		tk.Label.__init__(self, master, text=contenido, bg="#FFFFFF", 
-						  fg="#000000")
+						  fg="#000000", bd=10, highlightbackground="#FF0000")

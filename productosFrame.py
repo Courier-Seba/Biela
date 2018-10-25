@@ -1,5 +1,6 @@
 import tkinter as tk
 from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto, BotonLargo
+from widgets import MuestraLabel
 from gestion import productos
 
 class Productos(tk.Frame):
@@ -41,5 +42,17 @@ class Productos(tk.Frame):
 		self.subTitVista.grid(column=0, row=6)
 
 		# Vista
+		# Crea labels de cada producto
+		self.infoDeProductos = []
 		for prod in productos.lista:
-			cont = prod.textual()
+			cont = prod.formateo_textual()
+			infoProducto = MuestraLabel(self, cont)
+			self.infoDeProductos.append(infoProducto)
+
+		# Pocisiona
+		ultimoLugarDisponible = 7
+		for numLabel in range(len(self.infoDeProductos)):
+			self.infoDeProductos[numLabel].grid(column=0, 
+												row = ultimoLugarDisponible)
+			ultimoLugarDisponible += 1
+
