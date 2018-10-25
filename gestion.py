@@ -75,7 +75,7 @@ class ListaProductos:
 	def carga_data(self):
 		with open(self.nombreArchivo, "rb") as file:
 			carga = pickle.load(file)
-		
+
 		return carga
 
 	def guarda_data(self):

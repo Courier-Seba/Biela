@@ -70,5 +70,5 @@ class MuestraLabel(tk.Label):
 	"""Label para texto largo y complejo"""
 
 	def __init__(self, master, contenido):
-		tk.Label.__init__(self, master, text=contenido, bg="#FFFFFF", 
-						  fg="#000000", bd=10, highlightbackground="#FF0000")
+		tk.Label.__init__(self, master, text=contenido, fg="#000000", bd=10, 
+						  bg="#FFFFFF")
