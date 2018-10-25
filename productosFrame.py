@@ -1,5 +1,5 @@
 import tkinter as tk
-from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto
+from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto, BotonLargo
 from gestion import productos
 
 class Productos(tk.Frame):
@@ -20,11 +20,26 @@ class Productos(tk.Frame):
 
 		self.labelNuevo = Texto(self, "Nombre")
 		self.labelNuevo.grid(column=0, row=2)
-		self.ingreNuevo = EntradaIngreso(self)
-		self.ingreNuevo.grid(column=1, row=2)
+		self.ingreNuevoNom = EntradaIngreso(self)
+		self.ingreNuevoNom.grid(column=1, row=2)
+		self.labelNuevoPrec = Texto(self, "Descripción")
+		self.labelNuevoPrec.grid(column=0, row=3)
+		self.ingreNuevoPrec = EntradaIngreso(self)
+		self.ingreNuevoPrec.grid(column=1, row=3)
+		self.labelNuevoPrec = Texto(self, "Precio")
+		self.labelNuevoPrec.grid(column=0, row=4)
+		self.ingreNuevoPrec = EntradaIngreso(self)
+		self.ingreNuevoPrec.grid(column=1, row=4)
+
+		self.tomaNuevo = BotonLargo(self, "Cancelar")
+		self.tomaNuevo.grid(column=0, row=5, sticky=tk.NSEW)
+		self.tomaNuevo = BotonLargo(self, "Agregar")
+		self.tomaNuevo.grid(column=1, row=5, sticky=tk.NSEW)
 
 		# Lista de productos
 		self.subTitVista = Titulo(self, "Productos")
-		self.subTitVista.grid(column=0, row=5)
+		self.subTitVista.grid(column=0, row=6)
 
 		# Vista
+		for prod in productos.lista:
+			cont = prod.textual

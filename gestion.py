@@ -17,7 +17,7 @@ class Orden:
 		self.estado = estado
 
 	def calculo_total(self):
-		for prod in self.listaProductos:
+		for prod in self.productos:
 			final += prod.precio
 		
 		return final
@@ -54,9 +54,13 @@ class Producto:
 
 	def __init__(self, nombre, desc, precio):
 		self.nombre = nombre
-		self.descripcion = desc
+		self.descricion = desc
 		self.precio = precio
+		# Es una salida para la muestra de la info
 
+		def formateo_textual(self):
+			for atr in [self.nombre, self.descripcion, self.precio]:
+				textoFinal += atr + "\n"  
 
 class ListaProductos:
 	"""Productos de una orden"""

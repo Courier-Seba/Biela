@@ -58,3 +58,17 @@ class Texto(tk.Label):
 	def __init__(self, master, muestraTexto):
 		tk.Label.__init__(self, master, bg="#FFFFFF", fg="#000000", 
 						  text=muestraTexto)
+
+class BotonLargo(tk.Button):
+	"""Boton que llena eje x"""
+
+	# TODO: Falta el controller
+	def __init__(self, master, texto):
+		tk.Button.__init__(self, master, text=texto, bg="#FFFFFF", fg="#000000")
+
+class MuestraLabel(tk.Label):
+	"""Label para texto largo y complejo"""
+
+	def __init__(self, master, contenido):
+		tk.Label.__init__(self, master, text=contenido, bg="#FFFFFF", 
+						  fg="#000000")
