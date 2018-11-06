@@ -47,7 +47,7 @@ class Main(tk.Frame):
 		self.carga_frame("Bienvenida")
 
 	def carga_frame(self, page_name):
-		'''Carga el frame dado'''
+		""" Carga el frame dado"""
 		frame = self.frameList[page_name]
 		frame.tkraise()
 
@@ -64,7 +64,7 @@ class Lateral(tk.Frame):
 
 	def crea_bot(self):
 		botones = []
-		#Cantidad de botones (len de la lista) y sus textos
+		# Cantidad de botones (len de la lista) y sus textos
 		nombresBotones = ["Pedido", "Clientes", "Productos",
 						  "Estadisticas"]
 
@@ -75,6 +75,8 @@ class Lateral(tk.Frame):
 		return botones
 
 class Bienvenida(tk.Frame):
+	"""Frame al ingreso"""
+
 	def __init__(self, parent):
 		tk.Frame.__init__(self, parent, bg="#FFFFFF")
 		self.parent = parent
