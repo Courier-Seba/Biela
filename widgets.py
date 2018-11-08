@@ -60,11 +60,25 @@ class Texto(tk.Label):
 						  text=muestraTexto)
 
 class BotonLargo(tk.Button):
-	"""Boton que llena eje x"""
+	"""Boton que llena eje x
+		operacion: funcion del controler"""
 
 	# TODO: Falta el controller
-	def __init__(self, master, texto):
-		tk.Button.__init__(self, master, text=texto, bg="#FFFFFF", fg="#000000")
+	def __init__(self, master, texto, **kwargs):
+		tk.Button.__init__(self, master, text=texto, bg="#FFFFFF", fg="#000000",
+							command=lambda: self.ejecuta()
+						)
+		self.master = master
+		self.kw = kwargs
+
+
+	def ejecuta(self):
+		for key, value in self.kw.items():
+			if (key == "operacion"):
+				return getattr(self.master, value)()
+		
+		return ""
+
 
 class MuestraLabel(tk.Label):
 	"""Label para texto largo y complejo"""

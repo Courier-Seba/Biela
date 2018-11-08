@@ -34,7 +34,7 @@ class Productos(tk.Frame):
 
 		self.tomaNuevo = BotonLargo(self, "Cancelar")
 		self.tomaNuevo.grid(column=0, row=5, sticky=tk.NSEW)
-		self.tomaNuevo = BotonLargo(self, "Agregar")
+		self.tomaNuevo = BotonLargo(self, "Agregar", operacion='print("hola")' )
 		self.tomaNuevo.grid(column=1, row=5, sticky=tk.NSEW)
 
 		# Lista de productos
@@ -56,3 +56,5 @@ class Productos(tk.Frame):
 												row = ultimoLugarDisponible)
 			ultimoLugarDisponible += 1
 
+	def crea_producto(self): 
+		

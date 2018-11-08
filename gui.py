@@ -6,6 +6,13 @@ from clienteFrame import Clientes
 from productosFrame import Productos
 from estadisticasFrame import Estadisticas
 
+NOMBRE_FRAMES = [
+			"Pedido",
+			"Clientes", 
+			"Productos", 
+			"Estadisticas"
+		 ]
+
 class Window(tk.Tk):
 	"""Root class"""
 
@@ -34,16 +41,18 @@ class Main(tk.Frame):
 		self.lateral = Lateral(self)
 		self.lateral.pack(side=tk.LEFT, fill=tk.Y)
 
+		# Container de los frames que cambian
 		self.container = tk.Frame()
 		self.container.pack(side=tk.RIGHT, expand=True)
 		self.frameList = {}
 
+		# Crea cada frame
 		for Frame in (Bienvenida, Pedido, Clientes, Productos, Estadisticas):
 			page_name = Frame.__name__
 			frameCreado = Frame(parent=self.container)
 			self.frameList[page_name] = frameCreado
 			frameCreado.grid(row=0, column=0, sticky=tk.NSEW)
-
+		# Carga el primero
 		self.carga_frame("Bienvenida")
 
 	def carga_frame(self, page_name):
@@ -63,10 +72,10 @@ class Lateral(tk.Frame):
 			bot.pack(side=tk.TOP, fill=tk.X)
 
 	def crea_bot(self):
+		""" Crea botones del menu para cambio de frames """
 		botones = []
 		# Cantidad de botones (len de la lista) y sus textos
-		nombresBotones = ["Pedido", "Clientes", "Productos",
-						  "Estadisticas"]
+		nombresBotones = NOMBRE_FRAMES
 
 		for name in nombresBotones:
 			bot = BotonMenu(self, name, self.parent)
@@ -78,6 +87,7 @@ class Bienvenida(tk.Frame):
 	"""Frame al ingreso"""
 
 	def __init__(self, parent):
+		""" Primer frame que se muestra """
 		tk.Frame.__init__(self, parent, bg="#FFFFFF")
 		self.parent = parent
 		self.label = tk.Label(self, text="Bienvenido")
