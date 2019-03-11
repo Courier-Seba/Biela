@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 class Titulo(tk.Label):
         """Label para tituloso"""
 

@@ -1,6 +1,6 @@
 import tkinter
-from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto, BotonLargo
-from widgets import MuestraLabel
+from .widgets import Titulo, BotonIngreso, EntradaIngreso, Texto, BotonLargo
+from .widgets import MuestraLabel
 from gestion import productos
 
 class ProductsFrame(tkinter.Frame):

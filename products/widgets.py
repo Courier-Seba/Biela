@@ -78,10 +78,9 @@ class BotonLargo(tk.Button):
                                 return getattr(self.master, value)()
                 return ""
 
-
 class MuestraLabel(tk.Label):
         """Label para texto largo y complejo"""
 
         def __init__(self, master, contenido):
                 tk.Label.__init__(self, master, text=contenido, fg="#000000", bd=10, 
-                                                  b
+                                                  bg="#FFFFFF")

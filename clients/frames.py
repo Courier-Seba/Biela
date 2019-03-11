@@ -1,5 +1,5 @@
 import tkinter
-from widgets import Titulo, BotonIngreso, EntradaIngreso, Texto
+from .widgets import Titulo, BotonIngreso, EntradaIngreso, Texto
 
 
 class ClientsFrame(tkinter.Frame):
