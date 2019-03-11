@@ -84,4 +84,4 @@ class MuestraLabel(tk.Label):
 
         def __init__(self, master, contenido):
                 tk.Label.__init__(self, master, text=contenido, fg="#000000", bd=10, 
-                                                  bg="#FFFFFF")
+                                                  b
