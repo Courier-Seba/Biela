@@ -4,4 +4,5 @@
 title = "Biela"
 
 # Root background color
-background = "#FFFFFF"
+app_bg = "#FFFFFF"
+
