@@ -1,86 +1,85 @@
-import tkinter as tk
+import tkinter
 
-class BotonMenu(tk.Button):
-        """Boton del menu lateral"""
+class TitleLabel(tkinter.Label):
+        """ Title of Frame """
 
-        def __init__(self, master, texto, controller):
-            tk.Button.__init__(
-               self,
-               master, background="#FFFFFF",
-               foreground="#000000", text=texto,
-               activebackground="#0000FF",
-               command=lambda: controller.carga_frame(texto)
-            )
+        def __init__(self, master, text):
+                super().__init__(master, text=text, bg="#FF0000")
 
 
-class Titulo(tk.Label):
-        """Label para tituloso"""
+class AddButton(tkinter.Button):
+    """ Button for adding 1 product"""
 
-        def __init__(self, master, texto):
-                tk.Label.__init__(self, master, text=texto, bg="#FF0000")
-
-class BotonIngreso(tk.Button):
-        """Boton de ingreso"""
-
-        def __init__(self, master, texto, controller):
-            tk.Button.__init__(
-                self, master, text=texto,
-                command=lambda: controller.inserta_uno()
-            )
+    def __init__(master, texto):
+        super().__init__(
+            master,
+            text=texto,
+        )
 
 
-class EntradaIngreso(tk.Entry):
-        """Entrada de la cantidad de X productos."""
+class InsertProductsEntry(tkinter.Entry):
+        """ Entry for inserting products """
 
         def __init__(self, master):
-            tk.Entry.__init__(self, master, bg="#FFFFFF", fg="#000000")
+            super().__init__(master, bg="#FFFFFF", fg="#000000")
             self.insert(0, "0")
 
-        def inserta_uno(self):
+        def add_one(self):
             cantActual = self.toma_dato()
             cantFinal = cantActual + 1
-            self.delete(0, tk.END)
+            self.delete(0, tkinter.END)
             self.insert(0, str(cantFinal))
 
-        def toma_dato(self):
-            dato = self.get()
+        def read(self):
+            data = self.get()
             try:
-                datoInt = int(dato)
+                dataInt = int(dato)
             except:
                 ValueError: print("U miss")
             return datoInt
 
-class Texto(tk.Label):
-        """Texto comun"""
+class TextLabel(tkinter.Label):
+    """ Label for display text """
 
-        def __init__(self, master, muestraTexto):
-                tk.Label.__init__(
-                    self, master, bg="#FFFFFF", fg="#000000", 
-                    text=muestraTexto
-                )
+    def __init__(self, master, text):
+        super().__init__(
+            master,
+            bg="#FFFFFF",
+            fg="#000000",
+            text=text
+        )
 
-class BotonLargo(tk.Button):
-        """Boton que llena eje x
-                operacion: funcion del controler"""
+class LargeButton(tkinter.Button):
+    """ Large button that fills x """
 
         # TODO: Falta el controller
-        def __init__(self, master, texto, **kwargs):
-                tk.Button.__init__(self, master, text=texto, bg="#FFFFFF", fg="#000000",
-                                                        command=lambda: self.ejecuta()
-                                                )
-                self.master = master
-                self.kw = kwargs
+    def __init__(self, master, texto, **kwargs):
+        super().__init__(
+            master,
+            text=texto,
+            bg="#FFFFFF",
+            fg="#000000",
+            command=lambda: self.ejecuta()
+            )
+        self.master = master
+        self.kw = kwargs
 
 
-        def ejecuta(self):
-                for key, value in self.kw.items():
-                        if (key == "operacion"):
-                                return getattr(self.master, value)()
+    def ejecuta(self):
+        for key, value in self.kw.items():
+            if (key == "operacion"):
+                return getattr(self.master, value)()
+            else:
                 return ""
 
-class MuestraLabel(tk.Label):
-        """Label para texto largo y complejo"""
+class BoxedLabel(tkinter.Label):
+    """ Label with Border """
 
-        def __init__(self, master, contenido):
-                tk.Label.__init__(self, master, text=contenido, fg="#000000", bd=10, 
-                                                  bg="#FFFFFF")
+    def __init__(self, master, contenido):
+        super().__init__(
+            master,
+            text=contenido,
+            fg="#000000",
+            bd=10,
+            bg="#FFFFFF"
+        )

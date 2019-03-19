@@ -3,6 +3,7 @@ from .widgets import Titulo, BotonIngreso, EntradaIngreso, Texto
 
 
 class ClientsFrame(tkinter.Frame):
+    """ Frame of Clients management """
     def __init__(self, parent):
         super().__init__(parent, bg="#0000FF")
         self.parent = parent
