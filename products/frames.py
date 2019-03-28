@@ -1,64 +1,12 @@
+""" Product module frames """
+
 import tkinter
 
-from . import widgets
 from .config import Config
-
 from gestion import productos
 
-class ProductsFrame(tkinter.Frame):
-    """Frame de vista e ingreso de productos"""
-
-    def __init__(self, parent):
-        super().__init__(parent, bg="#FFFFFF")
-        self.parent = parent
-        self.start_widgets()
-
-    def start_widgets(self):
-        self.title = widgets.Title(self, Config.FRAME_TITLE)
-        self.title.grid(column=0, row=0, columnspan=99)
-
-        # Nuevo producto
-        self.sub_tit = widgets.Title(self, "Ingreso nuevo producto")
-        self.sub_tit.grid(column=0, row=1)
-
-        self.labelNuevo = widgets.TextLabel(self, "Nombre")
-        self.labelNuevo.grid(column=0, row=2)
-        self.ingreNuevoNom = widgets.AddButton(self)
-        self.ingreNuevoNom.grid(column=1, row=2)
-        self.labelNuevoPrec = widgets.TextLabel(self, "Descripción")
-        self.labelNuevoPrec.grid(column=0, row=3)
-        self.ingreNuevoPrec = widgets.AddButton(self)
-        self.ingreNuevoPrec.grid(column=1, row=3)
-        self.labelNuevoPrec = widgets.TextLabel(self, "Precio")
-        self.labelNuevoPrec.grid(column=0, row=4)
-        self.ingreNuevoPrec = widgets.AddButton(self)
-        self.ingreNuevoPrec.grid(column=1, row=4)
-
-        self.tomaNuevo = widgets.LargeButton(self, "Cancelar")
-        self.tomaNuevo.grid(column=0, row=5, sticky=tkinter.NSEW)
-        self.tomaNuevo = widgets.LargeButton(self, "Agregar", operacion='print("hola")' )
-        self.tomaNuevo.grid(column=1, row=5, sticky=tkinter.NSEW)
-
-        # Lista de productos
-        self.subTitVista = widgets.Titulo(self, "Productos")
-        self.subTitVista.grid(column=0, row=6)
-
-        # Vista
-        # Crea labels de cada producto
-        self.infoDeProductos = []
-        for prod in productos.lista:
-            cont = prod.formateo_textual()
-            infoProducto = MuestraLabel(self, cont)
-            self.infoDeProductos.append(infoProducto)
-
-        # Pocisiona
-        ultimoLugarDisponible = 7
-        for numLabel in range(len(self.infoDeProductos)):
-            self.infoDeProductos[numLabel].grid(
-                column=0,
-                row = ultimoLugarDisponible
-            )
-            ultimoLugarDisponible += 1
+from bar_project.widgets.app_wide import TitleLabel, InsertEntry, TextLabel, \
+    LargeButton, BoxedLabel
 
 class NewProductFrame(tkinter.Frame):
     """ Frame for adding products """
@@ -70,43 +18,71 @@ class NewProductFrame(tkinter.Frame):
 
 
     def load_widgets(self):
-        self.title = widgets.TitleLabel(self, Config.FRAME_TITLE)
+        """ Load Frame widgets """
+
+        self.title = TitleLabel(self, Config.FRAME_TITLE)
+        self.new_product_label = TextLabel(self)
+        self.new_desc_label = TextLabel(self)
+        self.new_value_label = TextLabel(self)
+        self.new_product_entry = InsertEntry(self)
+        self.new_desc_entry = InsertEntry(self)
+        self.new_value_entry = InsertEntry(self)
+        self.cancel_button = LargeButton(
+            self,
+            "Cancel",
+            self.get_product()
+        )
+        self.take_button = LargeButton(
+            self,
+            "Add",
+            self.get_product()
+        )
+
         self.title.grid(column=0, row=0, columnspan=99)
+        self.new_product_label.grid(column=0, row=2)
+        self.new_product_entry.grid(column=1, row=2)
+        self.new_desc_label.grid(column=0, row=3)
+        self.new_desc_entry.grid(column=1, row=3)
+        self.new_value_label.grid(column=0, row=4)
+        self.new_value_entry.grid(column=1, row=4)
+        self.cancel_button.grid(column=0, row=5, sticky=tkinter.NSEW)
+        self.take_button.grid(column=1, row=5, sticky=tkinter.NSEW)
 
-        self.labelNuevo = widgets.TextLabel(self, "Nombre")
-        self.labelNuevo.grid(column=0, row=2)
-        self.labelNuevoPrec = widgets.TextLabel(self, "Descripción")
-        self.labelNuevoPrec.grid(column=0, row=3)
-        self.labelNuevoPrec = widgets.TextLabel(self, "Precio")
-        self.labelNuevoPrec.grid(column=0, row=4)
+    def get_product(self):
+        print("called")
+        # """ Return list with the data """
+        # data_input = []
+        # data_input.append(self.widgets["new_product_entry"].read())
+        # data_input.append(self.widgets["new_desc_entry"].read())
+        # data_input.append(self.widgets["new_value_entry"].read())
+        # print(data_input)
+        # # return data_input
 
-        self.tomaNuevo = widgets.LargeButton(self, "Cancelar")
-        self.tomaNuevo.grid(column=0, row=5, sticky=tkinter.NSEW)
-        self.tomaNuevo = widgets.LargeButton(self, "Agregar")
-        self.tomaNuevo.grid(column=1, row=5, sticky=tkinter.NSEW)
 
 class ListProductsFrame(tkinter.Frame):
+    """ List of all products """
 
     def __init__(self, parent):
         super().__init__(parent)
         self.load_widgets()
 
     def load_widgets(self):
-        self.title = widgets.TitleLabel(self, "Productos")
-        self.title.grid(column=0, row=6)
+        """ To load/reload widgets """
+        self.title = TitleLabel(self, "Productos")
+        self.title.grid(column=0, row=0)
 
         # Crea labels de cada producto
-        self.infoDeProductos = []
+        self.info_produc = []
         for prod in productos.lista:
             cont = prod.formateo_textual()
-            infoProducto = widgets.BoxedLabel(self, cont)
-            self.infoDeProductos.append(infoProducto)
+            info_producto = BoxedLabel(self, cont)
+            self.info_produc.append(info_producto)
 
         # Pocisiona
-        ultimoLugarDisponible = 7
-        for numLabel in range(len(self.infoDeProductos)):
-            self.infoDeProductos[numLabel].grid(
+        last_cell_avaliable = 1
+        for widg in range(len(self.info_produc)):
+            self.info_produc[widg].grid(
                 column=0,
-                row = ultimoLugarDisponible
+                row=last_cell_avaliable
             )
-            ultimoLugarDisponible += 1
+            last_cell_avaliable += 1
