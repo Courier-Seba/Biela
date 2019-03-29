@@ -49,13 +49,9 @@ class LargeButton(tkinter.Button):
             text=texto,
             bg="#FFFFFF",
             fg="#000000",
+            command=controller
         )
-        self.config(command=lambda: self.ejecuta())
         self.master = master
-        self.controller = controller
-
-    def ejecuta(self):
-        self.controller
 
 
 class BoxedLabel(tkinter.Label):

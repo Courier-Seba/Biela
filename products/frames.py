@@ -30,12 +30,12 @@ class NewProductFrame(tkinter.Frame):
         self.cancel_button = LargeButton(
             self,
             "Cancel",
-            self.get_product()
+            self.get_product
         )
         self.take_button = LargeButton(
             self,
             "Add",
-            self.get_product()
+            self.get_product
         )
 
         self.title.grid(column=0, row=0, columnspan=99)
@@ -59,6 +59,7 @@ class NewProductFrame(tkinter.Frame):
         # # return data_input
 
 
+
 class ListProductsFrame(tkinter.Frame):
     """ List of all products """
 
@@ -68,21 +69,6 @@ class ListProductsFrame(tkinter.Frame):
 
     def load_widgets(self):
         """ To load/reload widgets """
-        self.title = TitleLabel(self, "Productos")
+        self.title = TitleLabel(self, "Products List")
         self.title.grid(column=0, row=0)
 
-        # Crea labels de cada producto
-        self.info_produc = []
-        for prod in productos.lista:
-            cont = prod.formateo_textual()
-            info_producto = BoxedLabel(self, cont)
-            self.info_produc.append(info_producto)
-
-        # Pocisiona
-        last_cell_avaliable = 1
-        for widg in range(len(self.info_produc)):
-            self.info_produc[widg].grid(
-                column=0,
-                row=last_cell_avaliable
-            )
-            last_cell_avaliable += 1
