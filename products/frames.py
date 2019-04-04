@@ -21,9 +21,9 @@ class NewProductFrame(tkinter.Frame):
         """ Load Frame widgets """
 
         self.title = TitleLabel(self, Config.FRAME_TITLE)
-        self.new_product_label = TextLabel(self)
-        self.new_desc_label = TextLabel(self)
-        self.new_value_label = TextLabel(self)
+        self.new_product_label = TextLabel(self, Config.NEW_PR_LABEL_NAME)
+        self.new_desc_label = TextLabel(self, Config.NEW_PR_LABEL_DESC)
+        self.new_value_label = TextLabel(self, Config.NEW_PR_LABEL_PRICE)
         self.new_product_entry = InsertEntry(self)
         self.new_desc_entry = InsertEntry(self)
         self.new_value_entry = InsertEntry(self)
@@ -49,14 +49,12 @@ class NewProductFrame(tkinter.Frame):
         self.take_button.grid(column=1, row=5, sticky=tkinter.NSEW)
 
     def get_product(self):
-        print("called")
-        # """ Return list with the data """
-        # data_input = []
-        # data_input.append(self.widgets["new_product_entry"].read())
-        # data_input.append(self.widgets["new_desc_entry"].read())
-        # data_input.append(self.widgets["new_value_entry"].read())
-        # print(data_input)
-        # # return data_input
+        """ Return list with the data """
+        data_input = []
+        data_input.append(self.new_product_entry.read())
+        data_input.append(self.new_desc_entry.read())
+        data_input.append(self.new_value_entry.read())
+        return data_input
 
 
 

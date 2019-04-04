@@ -29,8 +29,8 @@ class InsertEntry(tkinter.Entry):
 class TextLabel(tkinter.Label):
     """ Label for display text """
 
-    def __init__(self, master):
-        self.text = ""
+    def __init__(self, master, text):
+        self.text = text
 
         # Call the constructor of tk
         super().__init__(
