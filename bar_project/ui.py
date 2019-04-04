@@ -3,7 +3,7 @@ import tkinter
 
 # Settings
 from . import settings
-from .menubar.widgets import MenuBar
+from .widgets.menubar.widgets import MenuBar
 
 # Frames
 from . import frames
