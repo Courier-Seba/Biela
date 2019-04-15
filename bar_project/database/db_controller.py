@@ -11,27 +11,44 @@ class Database:
     DB_PATH = DB_FOLDER_PATH + "/db.sqlite3"
 
     def __init__(self):
-        self._connection
-        self._cursor
+        self.create_connection()
+        self.get_cursor()
 
-    def _create_connection(self):
+    def create_connection(self):
         """
         Starts a connection to the DB
         """
-        self._connection = sqlite3.connect(DB_PATH)
+        self.connection = sqlite3.connect(self.DB_PATH)
 
-    def _close_connection(self):
+    def get_cursor(self):
+        """ Sets the cursor first time """
+        self.cursor = self.connection.cursor()
+
+    def close_connection(self):
         """
         Close connection
         """
-        self._connection.close()
+        self.connection.close()
 
-    def _get_cursor(self):
-        self._connection
 
-    def create_table(self):
+    def create_table(self, table_name):
+        """ create a new table and set id column"""
+        pk_column_name = table_name + '_id'
+        self.cursor.execute(
+            'CREATE TABLE {tn} ( {pk} INTEGER PRIMARY KEY)'\
+            .format(tn=table_name,  pk=pk_column_name)
+        )
+        return print("New table created")
 
+    def add_column(self, table_name, column_name, column_type):
+        """ Add a column to a table in the db """
+        self.cursor.execute(
+            'ALTER TABLE {tn} ADD COLUMN {cn} {ct}'\
+            .format(tn=table_name, cn=column_name, ct=column_type)
+        )
 
 if __name__ == "__main__":
-    conn = create_connection()
-    close_connection(conn)
+    db = Database()
+    db.create_table('New_tb2')
+    db.add_column('New_tb2', 'co1', 'INTEGER')
+    db.close_connection()
