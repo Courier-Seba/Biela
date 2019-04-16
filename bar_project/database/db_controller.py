@@ -38,6 +38,7 @@ class Database:
             'CREATE TABLE {tn} ( {pk} INTEGER PRIMARY KEY)'\
             .format(tn=table_name,  pk=pk_column_name)
         )
+        self.cursor.commit()
         return print("New table created")
 
     def add_column(self, table_name, column_name, column_type):
@@ -47,8 +48,3 @@ class Database:
             .format(tn=table_name, cn=column_name, ct=column_type)
         )
 
-if __name__ == "__main__":
-    db = Database()
-    db.create_table('New_tb2')
-    db.add_column('New_tb2', 'co1', 'INTEGER')
-    db.close_connection()

@@ -54,6 +54,7 @@ class NewProductFrame(tkinter.Frame):
         data_input.append(self.new_product_entry.read())
         data_input.append(self.new_desc_entry.read())
         data_input.append(self.new_value_entry.read())
+
         return data_input
 
 
