@@ -41,7 +41,7 @@ class Database:
         self.connection.commit()
         return print("New table created")
 
-    def add_column(self, table_name, column_name, column_type):
+    def add_column(self, table_name, column_name, column_type, **kwargs):
         """ Add a column to a table in the db """
         self.cursor.execute(
             'ALTER TABLE {tn} ADD COLUMN {cn} {ct}'\
